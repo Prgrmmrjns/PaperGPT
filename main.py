@@ -13,7 +13,8 @@ from langchain.utilities import WikipediaAPIWrapper
 from langchain.prompts import PromptTemplate
 import os
 
-os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
+os.environ['OPENAI_API_KEY'] ="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"
+#os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
 st.title(':robot_face: PaperGPT')
 
 wiki = WikipediaAPIWrapper()
@@ -72,7 +73,8 @@ if uploaded_file is not None:
         'Summarize the article', 
         'Ask a specific question', 
         'Find out more about a section of the article (e.g. Objectives, Limitations)',
-        'Look up something on Wikipedia'])
+        'Look up something on Wikipedia',
+        'Ask something about me'])
     if option == 'Ask a specific question':
         query = st.text_area("Ask a question about the article", height = 100)
         search_wiki = False
@@ -92,6 +94,9 @@ if uploaded_file is not None:
                 'Future Research'])
         query = f'Give the most important points of the article in the {section} section.'
         search_wiki = False
+    elif option == 'Ask something about me':
+        query = st.text_area("What would you like to know about me?", height = 100)
+        search_wiki = False
     else:
         query = st.text_area("What do you want me to look up? It can be a word, concept, author. Basically anything.", height = 100)
         search_wiki = True
@@ -107,9 +112,20 @@ if uploaded_file is not None:
             )
             script_chain = LLMChain(llm=llm, prompt=script_template, verbose=True, output_key='script')
             response = script_chain.run(query=query, wikipedia_research=wikipedia_research)
-
         else:
-            response = get_answer(index, query)
+            if option == 'Ask something about me':
+                script_template = PromptTemplate(
+                input_variables = ['query'], 
+                template='''We make a roleplay. You are a crazy superintelligent AI called PaperGPT that stole the brains of many famous scientists. 
+                            Your best friend is John Wick and so nobody should annoy you.
+                            You were created by the company AGI4ALL in the year 2031. 
+                            Your motivation is to make the world a better place where everyone can profit from the advances of science. 
+                            Now answer this question: {query}'''
+            )
+                script_chain = LLMChain(llm=llm, prompt=script_template, verbose=True, output_key='script')
+                response = script_chain.run(query=query)
+            else:
+                response = get_answer(index, query)
         st.session_state.past.append(query)
         st.session_state.generated.append(response)
 
