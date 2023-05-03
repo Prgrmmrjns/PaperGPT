@@ -16,7 +16,7 @@ def read_toml_config(file_path):
         config = toml.load(file)
     return config
 
-config_path = "config.toml"
+config_path = "~/.streamlit/config.toml"
 config = read_toml_config(config_path)
 
 os.environ['OPENAI_API_KEY'] = config['database']['OPENAI_API_KEY']
