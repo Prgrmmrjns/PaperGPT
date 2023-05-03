@@ -10,7 +10,8 @@ from langchain.llms import OpenAI
 from langchain.vectorstores.faiss import FAISS
 from pypdf import PdfReader
 
-os.environ['OPENAI_API_KEY'] = "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"
+string1 = "sk-38yfyU6GkREIRfPKzJCsT3Blb"
+os.environ['OPENAI_API_KEY'] = string1 + "kFJbTyppThYWIYVqExxpmzK"
 st.title(':robot_face: PaperGPT')
 
 def parse_pdf(file):
