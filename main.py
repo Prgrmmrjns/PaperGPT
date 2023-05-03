@@ -13,8 +13,7 @@ from langchain.utilities import WikipediaAPIWrapper
 from langchain.prompts import PromptTemplate
 import os
 
-os.environ['OPENAI_API_KEY'] ="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"
-#os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
+os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
 st.title(':robot_face: PaperGPT')
 
 wiki = WikipediaAPIWrapper()
