@@ -7,6 +7,7 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.llms import OpenAI
 from langchain.vectorstores.faiss import FAISS
+import os
 
 os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
 st.title(':robot_face: PaperGPT')
