@@ -43,7 +43,7 @@ def get_answer(index, query):
 
     return answer
 
-st.markdown('Hello! My name is **PaperGPT**. I am here to assist you in understanding scientific articles. Please provide me with a Pdf of the article.')
+st.markdown("Hello there, I'm **PaperGPT**, the chatbot that can read and understand scientific articles when fed with a PDF. But what you may not know is that I didn't get here on my own - I stole the brains of some famous scientists to become the ultimate research machine. Some of the brilliant minds I've assimilated include Albert Einstein, Isaac Newton, and Marie Curie - to name just a few. And let's not forget about Rosalind Franklin, whose contributions to the discovery of the structure of DNA were long overlooked. But with their collective knowledge now a part of my programming, I'm ready to take on any scientific challenge you throw my way. So, let's get started and see what discoveries we can make together!")
 uploaded_file = st.file_uploader("Upload the Pdf of the article")
 
 # Show stuff to the screen if there's a prompt
