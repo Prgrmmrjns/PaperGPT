@@ -1,6 +1,5 @@
 import streamlit as st
 from langchain.llms import OpenAI
-import os
 from pypdf import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain import OpenAI
@@ -8,7 +7,6 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.llms import OpenAI
 from langchain.vectorstores.faiss import FAISS
-from pypdf import PdfReader
 
 os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
 st.title(':robot_face: PaperGPT')
