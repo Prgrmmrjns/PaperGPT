@@ -9,15 +9,6 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.llms import OpenAI
 from langchain.vectorstores.faiss import FAISS
 from pypdf import PdfReader
-import toml
-
-def read_toml_config(file_path):
-    with open(file_path, 'r') as file:
-        config = toml.load(file)
-    return config
-
-config_path = "config.toml"
-config = read_toml_config(config_path)
 
 os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
 st.title(':robot_face: PaperGPT')
